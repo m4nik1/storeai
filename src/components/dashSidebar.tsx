@@ -22,10 +22,16 @@ function LeftNavigation() {
     fileInputRef.current?.click();
   };
 
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log("Handling file: ", event.target.files);
 
     // Send Api call to backend
+    const response = await fetch("api/upload", {
+      method: "POST",
+      body: event.target.files?.[0],
+    });
+
+    console.log(response);
   };
 
   return (
