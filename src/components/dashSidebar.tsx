@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { Upload } from "lucide-react";
 import {
   Sidebar,
@@ -15,18 +16,41 @@ import { usePathname } from "next/navigation";
 
 function LeftNavigation() {
   const pathname = usePathname();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("Handling file: ", event.target.files);
+
+    // Send Api call to backend
+  };
+
   return (
     <Sidebar>
       <SidebarHeader className="flex items-center pt-5 gap-2">
-        <span className="font-bold text-xl">StoreAI</span>
+        <Link href="/files" className="font-bold text-xl">
+          StoreAI
+        </Link>
       </SidebarHeader>
       <SidebarContent className="px-4 pt-6">
         <div className="space-y-6">
-          <Button className="w-full h-10 rounded-lg bg-gradient-to-r cursor-pointer from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium shadow-md hover:shadow-lg transition-all duration-200">
+          <Button
+            onClick={handleFileClick}
+            className="w-full h-10 rounded-lg bg-gradient-to-r cursor-pointer from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium shadow-md hover:shadow-lg transition-all duration-200"
+          >
             <Upload className="w-4 h-4 mr-2" />
             Upload
           </Button>
-          <input type="file cursor-pointer" multiple hidden />
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFile}
+            hidden
+            multiple
+          />
         </div>
         <SidebarMenu className="flex items-center gap-3 rounded-lg">
           <Link href="/files" className="w-full">
