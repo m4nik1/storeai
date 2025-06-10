@@ -1,6 +1,7 @@
 "use client";
 
 import LeftNavigation from "@/components/dashSidebar";
+import StorageHeader from "@/components/storageHeader";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 function StoreAiApp() {
@@ -9,8 +10,8 @@ function StoreAiApp() {
       <div className="flex h-screen w-full bg-background">
         <LeftNavigation />
 
-        <SidebarInset>
-          {/* Insert Header/breadcrumbs here */}
+        <SidebarInset className="flex-1">
+          <StorageHeader />
 
           <main className="flex-1 p-6">
             <div className="mb-6">
