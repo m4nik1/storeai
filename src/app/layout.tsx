@@ -22,7 +22,7 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <StoreAiApp />
+          <StoreAiApp>{children}</StoreAiApp>
         </ThemeProvider>
       </body>
     </html>

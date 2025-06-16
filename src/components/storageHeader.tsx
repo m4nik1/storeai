@@ -27,7 +27,7 @@ function StorageHeader() {
 
       <div className="flex items-center gap-2">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-6 text-muted-foreground" />
           <Input
             placeholder="Search In storage with AI"
             className="pl-10 w-80 rounded-full bg-background border-border shadow-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:border-blue-500 transition-all duration-200"
@@ -53,7 +53,7 @@ function StorageHeader() {
 
         <ThemeToggle />
 
-        <Avatar>
+        <Avatar className="w-8 h-8">
           <AvatarImage />
           <AvatarFallback>MS</AvatarFallback>
         </Avatar>

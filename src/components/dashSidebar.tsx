@@ -58,7 +58,8 @@ function LeftNavigation() {
             multiple
           />
         </div>
-        <SidebarMenu className="flex items-center gap-3 rounded-lg">
+
+        <div className="space-y-6">
           <Link href="/files" className="w-full">
             <SidebarMenuButton
               isActive={pathname == "/files"}
@@ -67,8 +68,8 @@ function LeftNavigation() {
               My Files
             </SidebarMenuButton>
           </Link>
-        </SidebarMenu>
-        <SidebarMenu className="flex items-center gap-3 rounded-lg">
+        </div>
+        <div className="space-y-6">
           <Link href="/settings" className="w-full">
             <SidebarMenuButton
               isActive={pathname == "/settings"}
@@ -77,7 +78,7 @@ function LeftNavigation() {
               Settings
             </SidebarMenuButton>
           </Link>
-        </SidebarMenu>
+        </div>
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
