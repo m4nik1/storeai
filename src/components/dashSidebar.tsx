@@ -6,13 +6,13 @@ import {
   Sidebar,
   SidebarHeader,
   SidebarContent,
-  SidebarMenu,
   SidebarMenuButton,
   SidebarRail,
 } from "./ui/sidebar";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import UploadButton from "./fileUpload";
 
 function LeftNavigation() {
   const pathname = usePathname();
@@ -23,7 +23,13 @@ function LeftNavigation() {
   };
 
   const handleFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Handling file: ", event.target.files);
+    console.log("Handling file: ", event.target.files?.[0]);
+
+    const file: file = event.target.files?.[0];
+
+    const formData = new FormData();
+
+    formData.append("file", file);
 
     // Send Api call to backend
     const response = await fetch("api/upload", {
