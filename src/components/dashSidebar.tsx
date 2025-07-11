@@ -32,7 +32,7 @@ function LeftNavigation() {
     formData.append("file", file);
 
     // Send Api call to backend
-    const response = await fetch("api/upload", {
+    const response = await fetch("http://localhost:8080/upload", {
       method: "POST",
       body: event.target.files?.[0],
     });
