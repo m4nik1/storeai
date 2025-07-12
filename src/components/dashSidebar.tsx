@@ -22,7 +22,9 @@ function LeftNavigation() {
     fileInputRef.current?.click();
   };
 
-  const handleFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFile = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     console.log("Handling file: ", event.target.files?.[0]);
 
     const file: file = event.target.files?.[0];
@@ -34,7 +36,7 @@ function LeftNavigation() {
     // Send Api call to backend
     const response = await fetch("http://localhost:8080/upload", {
       method: "POST",
-      body: event.target.files?.[0],
+      body: formData,
     });
 
     console.log(response);
