@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model manik_data {
+  id        Int       @id @default(autoincrement())
+  file_name String
+  size      String
+  accessed  DateTime? @db.Date
+  uploaded  DateTime  @db.Date
+}
