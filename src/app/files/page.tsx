@@ -1,4 +1,7 @@
+"use client"
+
 import { Table, TableRow, TableHeader, TableHead, TableCell, TableBody } from "@/components/ui/table";
+import { useEffect, useState } from "react";
 
 export default function MyFiles() {
   const column_names = [
@@ -7,13 +10,27 @@ export default function MyFiles() {
     "Size"
   ]
 
-  const files = [
+  const [files, setFiles] = useState();
+
+  const files2 = [
     { 
       name: "test.py",
       date: "1 day ago",
       size: "200MB",
     }
-  ]
+  ];
+
+  useEffect(() => {
+    async function getFiles() {
+      const res = await fetch('/api/filesLoad')
+
+      const data = await res.json();
+      console.log(data)
+      // setFiles(data.data);
+    }
+
+    getFiles()
+  }, [])
   
   return (
     <div>
@@ -29,9 +46,9 @@ export default function MyFiles() {
         </TableHeader>
         <TableBody>
           {/* Now we will populate the data here */}
-          {files.map((file, index) => {
+          {files2.map((file, index) => {
             return (
-              <TableRow>
+              <TableRow key={0}>
                 <TableCell className="font-medium truncate text-sm">
                   { file.name }
                 </TableCell>

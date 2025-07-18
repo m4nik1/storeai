@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export default async function GET(req: NextRequest) {
     try {
@@ -9,4 +9,10 @@ export default async function GET(req: NextRequest) {
         console.log("Unable to get files")
         console.error(e)
     }
+
+    return NextResponse.json({
+        message: "Files for manik",
+        data: { "test": "test" },
+        status: 200
+    })
 }
