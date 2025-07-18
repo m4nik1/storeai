@@ -1,9 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function GET(req: NextRequest) {
+export async function GET(req: NextRequest) {
+    let files;
     try {
-        const files = await prisma.manik_data.findMany()
+        files = await prisma.manik_data.findMany()
         console.log("Files: ", files);
     } catch(e) {
         console.log("Unable to get files")
@@ -12,7 +13,7 @@ export default async function GET(req: NextRequest) {
 
     return NextResponse.json({
         message: "Files for manik",
-        data: { "test": "test" },
+        data: files,
         status: 200
     })
 }

@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 export async function POST(req: NextRequest) {
   console.log("Recieved request: ", req.body);
 
-  const response = await fetch('http://localhost:8080/upload',{
+  const response = await fetch('http://localhost:8081/upload',{
     method: "POST",
     body: req.body,
     headers: {
