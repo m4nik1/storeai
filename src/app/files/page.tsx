@@ -1,10 +1,18 @@
-import { Table, TableRow, TableHeader, TableHead } from "@/components/ui/table";
+import { Table, TableRow, TableHeader, TableHead, TableCell, TableBody } from "@/components/ui/table";
 
 export default function MyFiles() {
   const column_names = [
     "File Name", 
     "Last Modified",
     "Size"
+  ]
+
+  const files = [
+    { 
+      name: "test.py",
+      date: "1 day ago",
+      size: "200MB",
+    }
   ]
   
   return (
@@ -19,6 +27,24 @@ export default function MyFiles() {
             })}
           </TableRow>
         </TableHeader>
+        <TableBody>
+          {/* Now we will populate the data here */}
+          {files.map((file, index) => {
+            return (
+              <TableRow>
+                <TableCell className="font-medium truncate text-sm">
+                  { file.name }
+                </TableCell>
+                <TableCell className="text-sm text-muted-foreground">
+                  { file.size }
+                </TableCell>
+                <TableCell className="text-sm text-muted-foreground">
+                  { file.date }
+                </TableCell>
+              </TableRow>
+            )
+          })}
+        </TableBody>
       </Table>
     </div>
   );
