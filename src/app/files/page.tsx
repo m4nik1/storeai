@@ -10,15 +10,7 @@ export default function MyFiles() {
     "Size"
   ]
 
-  const [files, setFiles] = useState();
-
-  const files2 = [
-    { 
-      name: "test.py",
-      date: "1 day ago",
-      size: "200MB",
-    }
-  ];
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     async function getFiles() {
@@ -26,7 +18,7 @@ export default function MyFiles() {
 
       const data = await res.json();
       console.log(data)
-      // setFiles(data.data);
+      setFiles(data.data);
     }
 
     getFiles()
@@ -46,17 +38,17 @@ export default function MyFiles() {
         </TableHeader>
         <TableBody>
           {/* Now we will populate the data here */}
-          {files2.map((file, index) => {
+          {files.map((file, index) => {
             return (
               <TableRow key={0}>
                 <TableCell className="font-medium truncate text-sm">
-                  { file.name }
+                  { file.file_name }
+                </TableCell>
+                <TableCell className="text-sm text-muted-foreground">
+                  { file.uploaded }
                 </TableCell>
                 <TableCell className="text-sm text-muted-foreground">
                   { file.size }
-                </TableCell>
-                <TableCell className="text-sm text-muted-foreground">
-                  { file.date }
                 </TableCell>
               </TableRow>
             )
