@@ -1,38 +1,39 @@
-"use client"
+"use client";
 
-import { Table, TableRow, TableHeader, TableHead, TableCell, TableBody } from "@/components/ui/table";
+import {
+  Table,
+  TableRow,
+  TableHeader,
+  TableHead,
+  TableCell,
+  TableBody,
+} from "@/components/ui/table";
 import { useEffect, useState } from "react";
 
 export default function MyFiles() {
-  const column_names = [
-    "File Name", 
-    "Last Modified",
-    "Size"
-  ]
+  const column_names = ["File Name", "Last Modified", "Size"];
 
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
     async function getFiles() {
-      const res = await fetch('/api/filesLoad')
+      const res = await fetch("/api/filesLoad");
 
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       setFiles(data.data);
     }
 
-    getFiles()
-  }, [])
-  
+    getFiles();
+  }, []);
+
   return (
     <div>
       <Table>
         <TableHeader>
           <TableRow className="bg-muted/30">
             {column_names.map((names, index) => {
-              return (
-                <TableHead key={index}>{ names }</TableHead>
-              )
+              return <TableHead key={index}>{names}</TableHead>;
             })}
           </TableRow>
         </TableHeader>
@@ -40,18 +41,18 @@ export default function MyFiles() {
           {/* Now we will populate the data here */}
           {files.map((file, index) => {
             return (
-              <TableRow key={0}>
+              <TableRow key={index}>
                 <TableCell className="font-medium truncate text-sm">
-                  { file.file_name }
+                  {file.file_name}
                 </TableCell>
                 <TableCell className="text-sm text-muted-foreground">
-                  { file.uploaded }
+                  {file.uploaded}
                 </TableCell>
                 <TableCell className="text-sm text-muted-foreground">
-                  { file.size }
+                  {file.size}
                 </TableCell>
               </TableRow>
-            )
+            );
           })}
         </TableBody>
       </Table>
