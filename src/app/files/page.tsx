@@ -28,7 +28,7 @@ export default function MyFiles() {
   }, []);
 
   return (
-    <div className="border border-border rounded-lg overflow-hidden bg-card">
+    <div className="border border-border rounded-lg overflow-hidden">
       <Table>
         <TableHeader>
           <TableRow className="bg-muted/30">
@@ -41,10 +41,7 @@ export default function MyFiles() {
           {/* Now we will populate the data here */}
           {files.map((file, index) => {
             return (
-              <TableRow
-                key={index}
-                className="hover:bg-muted/50 cursor-pointer group"
-              >
+              <TableRow key={index} className="cursor-pointer group">
                 <TableCell className="font-medium">{file.file_name}</TableCell>
                 <TableCell className="text-sm">{file.uploaded}</TableCell>
                 <TableCell className="text-sm">{file.size}</TableCell>
